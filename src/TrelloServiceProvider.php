@@ -2,6 +2,7 @@
 
 namespace Gregoriohc\LaravelTrello;
 
+use Gregoriohc\LaravelTrello\Facades\Wrapper;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class TrelloServiceProvider extends LaravelServiceProvider {
@@ -30,11 +31,11 @@ class TrelloServiceProvider extends LaravelServiceProvider {
      */
     public function register() {
 
-        $this->app->singleton('Trello', function($app) {
+        $this->app->singleton(Wrapper::class, function($app) {
             return new Wrapper($app['config']);
         });
 
-        $this->app->alias('Trello', 'trelo');
+        $this->app->alias(Wrapper::class, 'trelo');
     }
 
     /**
