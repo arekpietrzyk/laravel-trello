@@ -35,7 +35,7 @@ class TrelloServiceProvider extends LaravelServiceProvider {
             return new Wrapper($app['config']);
         });
 
-        $this->app->alias(Wrapper::class, 'trelo');
+        $this->app->alias(Wrapper::class, 'trello');
     }
 
     /**
