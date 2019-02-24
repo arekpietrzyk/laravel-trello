@@ -34,7 +34,7 @@ class TrelloServiceProvider extends LaravelServiceProvider {
     public function register() {
 
         $this->app->singleton(Trello::class, function($app) {
-            return new Trello($app['config']);
+            return new Wrapper($app['config']);
         });
 
         $this->app->alias(Trello::class, TrelloServiceProvider::BOOT_NAME);
