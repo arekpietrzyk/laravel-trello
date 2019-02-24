@@ -2,10 +2,12 @@
 
 namespace Gregoriohc\LaravelTrello;
 
-use Gregoriohc\LaravelTrello\Facades\Wrapper;
+use Gregoriohc\LaravelTrello\Facades\Trello;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class TrelloServiceProvider extends LaravelServiceProvider {
+
+    const BOOT_NAME = 'trello.wrapper';
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -31,11 +33,11 @@ class TrelloServiceProvider extends LaravelServiceProvider {
      */
     public function register() {
 
-        $this->app->singleton(Wrapper::class, function($app) {
-            return new Wrapper($app['config']);
+        $this->app->singleton(Trello::class, function($app) {
+            return new Trello($app['config']);
         });
 
-        $this->app->alias(Wrapper::class, 'trello');
+        $this->app->alias(Trello::class, TrelloServiceProvider::BOOT_NAME);
     }
 
     /**
@@ -46,7 +48,7 @@ class TrelloServiceProvider extends LaravelServiceProvider {
     public function provides() {
 
         return [
-            'trello',
+            TrelloServiceProvider::BOOT_NAME,
         ];
     }
 
