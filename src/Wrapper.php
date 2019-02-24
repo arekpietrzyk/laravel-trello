@@ -160,7 +160,7 @@ class Wrapper
     /**
      * Returns default organization id
      *
-     * @return Manager
+     * @return bool|string
      */
     public function getDefaultOrganizationId()
     {
@@ -170,7 +170,7 @@ class Wrapper
     /**
      * Returns default board id
      *
-     * @return Manager
+     * @return bool|string
      */
     public function getDefaultBoardId()
     {
@@ -180,7 +180,7 @@ class Wrapper
     /**
      * Returns default list id
      *
-     * @return Manager
+     * @return bool|string
      */
     public function getDefaultListId()
     {
